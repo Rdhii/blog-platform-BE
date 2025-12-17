@@ -6,4 +6,8 @@ export class PostService {
     async getAllPost() {
         return await this.postRepo.getAllPost();
     }
+
+    async createPost(data: {title: string; category:string; content:string; tags:string[]}) {
+        return await this.postRepo.createPost(data);
+    }
 }

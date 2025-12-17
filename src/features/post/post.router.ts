@@ -5,10 +5,8 @@ const postRouter = Router();
 const postController = new PostController();
 
 
-postRouter.get('/', (req: Request, res: Response) => {
-    res.send('hello post');
-})
+postRouter.get("/", postController.getPost);
 
-postRouter.get('/all', postController.getPost);
+postRouter.post("/", postController.createPost);
 
 export default postRouter;

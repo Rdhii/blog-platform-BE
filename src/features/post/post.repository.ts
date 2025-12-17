@@ -5,4 +5,16 @@ export class PostRepository {
         const post = await prisma.post.findMany();
         return post;
     }
+
+    async createPost(data: {title: string; category:string; content:string; tags:string[]}) {
+        const post = await prisma.post.create({
+            data: {
+                title: data.title,
+                category: data.category,
+                content: data.content,
+                tags: data.tags
+            }
+        })
+        return post;
+    }
 }
