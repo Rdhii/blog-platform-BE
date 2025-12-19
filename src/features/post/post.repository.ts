@@ -6,6 +6,13 @@ export class PostRepository {
         return post;
     }
 
+    async getPostById(id: number) {
+        const post = await prisma.post.findUnique({
+            where: { id }
+        });
+        return post;
+    }
+
     async createPost(data: {title: string; category:string; content:string; tags:string[]}) {
         const post = await prisma.post.create({
             data: {

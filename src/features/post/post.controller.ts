@@ -8,6 +8,12 @@ export class PostController {
         return res.status(200).json(posts);
     }
 
+    getPostById = async (req: Request, res: Response) => {
+        const id = Number(req.params.id);
+        const post = await this.postService.getPostById(id);
+        return res.status(200).json(post);
+    }
+
     createPost = async (req: Request, res: Response) => {
         try {
             const { title, category, content, tags } = req.body;

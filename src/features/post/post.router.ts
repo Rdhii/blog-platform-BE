@@ -7,6 +7,8 @@ const postController = new PostController();
 
 postRouter.get("/", postController.getPost);
 
+postRouter.get("/:id", postController.getPostById);
+
 postRouter.post("/", postController.createPost);
 
 export default postRouter;
