@@ -36,4 +36,13 @@ export class PostController {
             })
         }
     } 
+
+    deletePost = async (req: Request, res: Response) => {
+        const id = Number(req.params.id);
+        const deletedPost = await this.postService.deletePost(id);
+        return res.status(200).json({
+            message: "Post deleted successfully",
+            data: deletedPost
+        });
+    }
 }

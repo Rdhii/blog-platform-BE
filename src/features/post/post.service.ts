@@ -14,4 +14,8 @@ export class PostService {
     async createPost(data: {title: string; category:string; content:string; tags:string[]}) {
         return await this.postRepo.createPost(data);
     }
+
+    async deletePost(id: number) {
+        return await this.postRepo.deletPost(id);
+    }
 }
