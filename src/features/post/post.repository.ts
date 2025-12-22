@@ -31,5 +31,13 @@ export class PostRepository {
         });
         return post;
     }
+    
+    async updatePost(id: number, data: {title?: string; category?:string; content?:string; tags?:string[]}) {
+        const post = await prisma.post.update({
+            where: { id },
+            data: data 
+        });
+        return post;
+    }
 
 }

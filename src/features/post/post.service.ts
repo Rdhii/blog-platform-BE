@@ -18,4 +18,8 @@ export class PostService {
     async deletePost(id: number) {
         return await this.postRepo.deletPost(id);
     }
+
+    async updatePost(id: number, data: {title?: string; category?:string; content?:string; tags?:string[]}) {
+        return await this.postRepo.updatePost(id, data);
+    }
 }

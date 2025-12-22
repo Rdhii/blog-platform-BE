@@ -45,4 +45,21 @@ export class PostController {
             data: deletedPost
         });
     }
+
+    updatePost = async (req: Request, res: Response) => {
+        try {
+            const id = Number(req.params.id);
+            const { title, category, content, tags } = req.body;
+
+            const updatedPost = await this.postService.updatePost(id, { title, category, content, tags });
+            return res.status(200).json({
+                message: "Post updated successfully",
+                data: updatedPost
+            });
+        } catch (error) {
+            return res.status(500).json({
+                error: "Gagal memperbarui post"
+            });
+        }
+    }
 }
