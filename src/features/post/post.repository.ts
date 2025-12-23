@@ -1,7 +1,18 @@
+import { title } from "node:process";
 import { prisma } from "../../lib/prisma";
 
 export class PostRepository {
-    async getAllPost() {
+    async getAllPost(search?: string) {
+        if (search) {
+            const post = await prisma.post.findMany({
+                where: {
+                    OR: [
+                       { title: { contains: search, mode: 'insensitive' } },
+                    ]
+                }
+            });
+            return post;
+        }
         const post = await prisma.post.findMany();
         return post;
     }

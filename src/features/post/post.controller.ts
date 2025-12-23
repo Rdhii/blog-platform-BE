@@ -4,7 +4,8 @@ import { PostService } from "./post.service";
 export class PostController {
     postService = new PostService();
     getPost = async (req: Request, res: Response) => {
-        const posts = await this.postService.getAllPost();
+        const { search } = req.query;
+        const posts = await this.postService.getAllPost(search as string | undefined);
         return res.status(200).json(posts);
     }
 

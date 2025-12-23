@@ -3,8 +3,8 @@ import { PostRepository } from "./post.repository";
 export class PostService {
     private postRepo = new PostRepository();
 
-    async getAllPost() {
-        return await this.postRepo.getAllPost();
+    async getAllPost(search?: string) {
+        return await this.postRepo.getAllPost(search);
     }
 
     async getPostById(id: number) {
